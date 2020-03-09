@@ -39,7 +39,7 @@ public class ExportDocx {
       String username = "小件";
       String sex = "男";
       String nation = "汉";
-      Object[] Vals = new Object[] {"小郭软件@2016", username, sex, nation,"","","","","","","","","","","","","",""};
+      Object[] Vals = new Object[] {"小郭软件@2016", username, sex, nation, "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
       doc.getMailMerge().execute(Flds, Vals);
 
       //教育情况
@@ -75,6 +75,9 @@ public class ExportDocx {
         works.getRows().add(row);
       }
       doc.getMailMerge().executeWithRegions(works);
+      String[] hr = new String[] {"masterLawAuditMemo", "masterLawAuditUser", "masterLawAuditTime"};
+      Object[] hrVal = new Object[] {"测试成功", "张三", DateUtil.format(companyLawyerWorkAddDTOS.get(0).getWorkStartTime(), "yyyy-MM-dd")};
+      doc.getMailMerge().execute(hr, hrVal);
 
       response.setHeader("Content-Disposition", "attachment; filename=20200307.pdf");
       response.setContentType("application/octet-stream;charset=UTF-8");
